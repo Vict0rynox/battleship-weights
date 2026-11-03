@@ -52,6 +52,23 @@ settings to exist; creating a local build does not publish anything.
 See GitHub's [custom workflow instructions](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
 and [publishing source settings](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
 
+## Enable the prebuilt snapshot directly
+
+The `gh-pages` branch contains the generated site files, `.nojekyll`, bundled
+model tensors, and summaries-only public data. It contains no raw game histories.
+To use it, select **Settings → Pages → Build and deployment → Source → Deploy
+from a branch**, choose **gh-pages** and **/ (root)**, then **Save**.
+
+GitHub's native Pages deployment publishes that branch. The expected project URL
+is `https://Vict0rynox.github.io/battleship-weights/`; wait for GitHub's successful
+Pages deployment before treating it as live.
+
+This is an alternative to the custom Actions workflow above. Choose one source
+mode. The `Publish experiment dashboard` workflow is intended for **GitHub
+Actions** source mode; branch mode uses GitHub's native Pages deployment instead.
+Future branch deployments need an updated generated `gh-pages` snapshot; updating
+`site-data/` on `main` alone does not refresh the prebuilt branch.
+
 ## Refresh the public experiments
 
 After running evaluations or recording more imported artifacts locally:
