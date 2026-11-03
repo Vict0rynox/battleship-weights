@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0a1220" />
+    <title>Battleship · Experiment lab</title>
+    <link rel="stylesheet" href="/assets/style.css" />
+    <script type="module" src="/assets/app.js"></script>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <a class="brand" href="#experiments"
+        ><span class="brand-icon">▦</span
+        ><span>BATTLESHIP<small>EXPERIMENT LAB</small></span></a
+      >
+      <p class="nav-label">WORKSPACE</p>
+      <nav aria-label="Main navigation">
+        <a href="#experiments" data-view="experiments"
+          >◈ <span>Experiments</span></a
+        ><a href="#results" data-view="results">▥ <span>Results</span></a
+        ><a href="#viewer" data-view="viewer">▦ <span>Game viewer</span></a
+        ><a href="#new" data-view="new">＋ <span>New game</span></a>
+      </nav>
+      <div class="sidebar-bottom">
+        <span class="status-dot"></span> Local research workspace<small
+          >Fixed weights. Observable play.</small
+        >
+      </div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <span
+          ><span class="status-dot"></span> LOCAL WORKSPACE
+          <span class="divider">/</span>
+          <span id="breadcrumb">Experiments</span></span
+        ><a class="button small" href="#new">＋ New game</a>
+      </header>
+      <main id="app" tabindex="-1"></main>
+      <footer>
+        10 × 10 board <span>•</span> Five ships <span>•</span> One shot per turn
+        <span class="footer-right">BATTLESHIP / RESEARCH LAB</span>
+      </footer>
+    </div>
+    <div id="toast" role="status" hidden></div>
+    <div id="error" role="alert" hidden></div>
+  </body>
+</html>
