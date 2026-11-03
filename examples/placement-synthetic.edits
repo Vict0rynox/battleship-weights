@@ -1,0 +1,7 @@
+# Synthetic integration example only; no defensive-strength claim.
+# Carrier identity activates a small orientation preference.
+W1[500, 0] = 1
+b1[0] = -.5
+W2[0, 0] = 1
+W3[0, 0:2] = [.25, -.25]
+b3[199] = .1

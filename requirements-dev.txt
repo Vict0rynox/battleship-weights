@@ -1,0 +1,5 @@
+-e ./packages/protocol
+-e ./packages/client[weights]
+-e ./packages/server
+pytest>=8,<10
+build>=1,<2

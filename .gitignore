@@ -1,0 +1,38 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+*.session.json
+.battleship-session.json
+.battleship/
+coverage.xml
+.coverage
+
+.DS_Store
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+.aws/
+.ssh/
+.codex/
+.idea/
+.vscode/
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Private model imports, raw benchmark histories and logs
+weights/generated/
+*.jsonl
+*.log
+
+# Additional analysis/build caches
+.mypy_cache/
+.ruff_cache/
+htmlcov/

@@ -1,0 +1,52 @@
+name: Publish experiment dashboard
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - "site-data/**"
+      - "packages/server/src/battleship_server/static/**"
+      - "scripts/export_ui.py"
+      - "tests/test_ui_browser.mjs"
+      - "tests/test_ui_replay.mjs"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    permissions:
+      contents: read
+      pages: read
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build from public snapshot (Python standard library only)
+        run: python3 scripts/export_ui.py build
+      - name: Check replay and browser simulation
+        run: |
+          node tests/test_ui_replay.mjs
+          node tests/test_ui_browser.mjs
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+  deploy:
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
